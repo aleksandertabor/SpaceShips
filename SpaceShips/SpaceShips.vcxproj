@@ -115,7 +115,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="pocisk.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="stdatx.cpp" />
+    <ClCompile Include="wrog.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pocisk.h" />
+    <ClInclude Include="stdatx.h" />
+    <ClInclude Include="wrog.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
