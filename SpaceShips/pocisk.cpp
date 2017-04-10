@@ -7,9 +7,11 @@ pocisk::pocisk()
 	s_pocisk.setTexture(t_pocisk);
 }
 
-int pocisk::pozycja(int x, int y)
+int pocisk::pozycja(int a, int b)
 {
-	s_pocisk.setPosition(x, y);
+	s_pocisk.setPosition(a, b);
+	x = a;
+	y = b;
 	return 0;
 }
 
@@ -21,5 +23,16 @@ int pocisk::wyswietl(sf::RenderWindow & renderWindow)
 
 int pocisk::usun()
 {
+	return 0;
+}
+sf::Sprite pocisk::zwroc()
+{
+	return s_pocisk;
+}
+
+int pocisk::ruch()
+{
+	cout << x << " " <<  y << endl;
+	pozycja(x, y + 1);
 	return 0;
 }
