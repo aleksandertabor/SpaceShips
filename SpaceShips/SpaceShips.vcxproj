@@ -115,12 +115,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Collision.cpp" />
     <ClCompile Include="pocisk.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="stdatx.cpp" />
     <ClCompile Include="wrog.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Collision.h" />
     <ClInclude Include="pocisk.h" />
     <ClInclude Include="stdatx.h" />
     <ClInclude Include="wrog.h" />

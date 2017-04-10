@@ -11,6 +11,7 @@
 #include <conio.h>
 #include <chrono>
 #include <string>
+#include "Collision.h"
 
 using namespace std;
 

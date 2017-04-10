@@ -16,4 +16,6 @@ public:
 	int pocisk::pozycja(int x, int y);
 	int pocisk::wyswietl(sf::RenderWindow & renderWindow);
 	int pocisk::usun();
+	sf::Sprite pocisk::zwroc();
+	int pocisk::ruch();
 };
