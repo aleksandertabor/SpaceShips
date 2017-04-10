@@ -12,6 +12,8 @@
 #include <chrono>
 #include <string>
 #include "Collision.h"
+#include<stdlib.h>
+#include<time.h>
 
 using namespace std;
 

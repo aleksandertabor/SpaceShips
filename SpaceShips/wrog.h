@@ -11,6 +11,8 @@ public:
 	int tab_x[5];
 	int id_wroga = 0;
 	int id_pocisku = 0;
+	int zuzyty = 0;
+	int id_poc = 0;
 	string tekstura = "grafika/wrog.png";
 
 	sf::Texture t_wrog;

@@ -192,7 +192,11 @@ int main()
 
 		
 		bullet[1][0].ruch();
+		bullet[1][1].ruch();
+		bullet[1][2].ruch();
 		bullet[4][0].ruch();
+		bullet[4][1].ruch();
+		bullet[4][2].ruch();
 
 
 		//Rysowanie calej gry
@@ -254,6 +258,7 @@ void keyboard()
 	{
 		enemy[1].wystrzal(bullet);
 		enemy[4].wystrzal(bullet);
+		Sleep(200);
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::B))

@@ -67,7 +67,9 @@ int wrog::strzelaj(sf::RenderWindow & renderWindow, pocisk ** bullet, int id_poc
 
 int wrog::wystrzal(pocisk ** bullet)
 {
-	bullet[id_wroga][0].pozycja(wrog::posx() + 85, wrog::posy() + 140);
-
+	bullet[id_wroga][id_poc].pozycja(wrog::posx() + 85, wrog::posy() + 140);
+	zuzyty = 1;
+	//printf("%i", id_poc);
+	id_poc++;
 	return 0;
 }
