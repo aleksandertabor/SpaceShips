@@ -14,6 +14,7 @@ sf::RenderWindow renderWindow(sf::VideoMode(1280, 720), "SpaceShips");
 sf::Event event;
 wrog* enemy = new wrog[6];//Wrog
 pocisk** bullet = new pocisk*[5];//Pocisk wroga
+pocisk * bullet_player = new pocisk[5];//Pocisk gracza
 
 								 //Zmienne
 								 //Statek
@@ -78,8 +79,15 @@ int main()
 		for (int j = 0; j < 5; j++)
 		{
 			bullet[i][j].pozycja(5000, 5000);
+			bullet[i][j].przydziel(1);
 		}
 
+	}
+	//Tworzenie pociskow gracza
+	for (int i = 0; i < 5; i++)
+	{
+		bullet_player[i].pozycja(100, 100);
+		bullet_player[i].przydziel(2);
 	}
 	
 
@@ -222,6 +230,14 @@ int main()
 
 			//Wyswietlenie pociskow
 
+
+			for (int i = 0; i < 5; i++)
+			{
+				bullet_player[i].wyswietl(renderWindow);
+				bullet_player[i].ruch();
+			}
+
+
 			for (int i = 0; i < 5; i++)
 			{
 				for (int j = 0; j < 5; j++)
@@ -309,6 +325,11 @@ void keyboard()
 	{
 		enemy[0].wystrzal(bullet);
 		//enemy[4].wystrzal(bullet);
+		Sleep(200);
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+	{
+		bullet_player[0].pozycja(500, 500);
 		Sleep(200);
 	}
 }
