@@ -73,3 +73,55 @@ int wrog::wystrzal(pocisk ** bullet)
 	id_poc++;
 	return 0;
 }
+
+int wrog::ruch()
+{
+	int kierunek = w_kierunek;
+	int predkosc = w_predkosc;
+	//cout << x << " " << y << endl;
+	//kierunki: 0 - stop, 1 - w lewo, 2 - w gore, 3 - w dol, 4 - w prawo
+	if (kierunek == 4)
+	{
+		pozycja(x + predkosc, y);
+	}	
+	if (kierunek == 3)
+	{
+		pozycja(x, y + predkosc);
+	}
+	if (kierunek == 2)
+	{
+		pozycja(x, y - predkosc);
+	}
+	if (kierunek == 1)
+	{
+		pozycja(x - predkosc, y);
+	}
+	if (kierunek == 0)
+	{
+		pozycja(x, y);
+	}
+	return 0;
+}
+
+int wrog::kolizja_sciana(sf::Sprite sprite1, sf::Sprite sprite2)
+{
+	if (Collision::PixelPerfectTest(wrog::zwroc(), sprite1, 0))
+	{
+		cout << "kolizja_sciana_prawa" << endl;
+		//zmiana kierunku i wysokosci
+		w_kierunek = 1;
+		w_predkosc = 10;
+		y += 50;
+	}
+
+	if (Collision::PixelPerfectTest(wrog::zwroc(), sprite2, 0))
+	{
+		cout << "kolizja_sciana_lewa" << endl;
+		//zmiana kierunku i wysokosci
+		w_kierunek = 4;
+		w_predkosc = 10;
+		y += 50;
+	}
+	
+	return 0;
+}

@@ -10,6 +10,7 @@ pocisk::pocisk()
 int pocisk::pozycja(int a, int b)
 {
 	s_pocisk.setPosition(a, b);
+	//s_pocisk.setPosition(300, 300);
 	x = a;
 	y = b;
 	return 0;
@@ -33,6 +34,6 @@ sf::Sprite pocisk::zwroc()
 int pocisk::ruch()
 {
 	cout << x << " " <<  y << endl;
-	pozycja(x, y + 1);
+	pozycja(x, y + 2);
 	return 0;
 }

@@ -5,8 +5,8 @@
 class pocisk
 {
 public:
-	int x = 0;
-	int y = 0;
+	int x = 500;
+	int y = 500;
 	string tekstura = "grafika/pocisk.png";
 
 	sf::Texture t_pocisk;
