@@ -13,6 +13,8 @@ public:
 	int id_pocisku = 0;
 	int zuzyty = 0;
 	int id_poc = 0;
+	int w_kierunek = 4;
+	int w_predkosc = 10;
 	string tekstura = "grafika/wrog.png";
 
 	sf::Texture t_wrog;
@@ -26,4 +28,6 @@ public:
 	int wrog::posx();
 	int wrog::posy();
 	sf::Sprite wrog::zwroc();
+	int wrog::ruch();
+	int wrog::kolizja_sciana(sf::Sprite sprite1, sf::Sprite sprite2);
 };
