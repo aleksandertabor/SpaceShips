@@ -16,7 +16,7 @@ sf::RenderWindow renderWindow(sf::VideoMode(1280, 720), "SpaceShips");
 sf::Event event;
 wrog* enemy = new wrog[12];//Wrog
 statek player;
-pocisk** bullet = new pocisk*[50];//Pocisk wroga
+pocisk** bullet = new pocisk*[60];//Pocisk wroga
 pocisk * bullet_player = new pocisk[50];//Pocisk gracza
 
 										 //Zmienne
@@ -24,6 +24,7 @@ pocisk * bullet_player = new pocisk[50];//Pocisk gracza
 int statek_x = 500;
 int statek_y = 580;
 int numer_pocisku_gracza = -1;
+int huj = 0;
 
 
 
@@ -44,6 +45,9 @@ int main()
 
 	sf::Clock clock4;
 	sf::Time t4 = clock4.getElapsedTime();
+
+	sf::Clock clock5;
+	sf::Time t5 = clock5.getElapsedTime();
 
 	//Inicjacja//
 	renderWindow.setFramerateLimit(60);
@@ -75,6 +79,22 @@ int main()
 		return EXIT_FAILURE;
 	sf::Sprite sciana3;
 	sciana3.setTexture(t_sciana3);
+
+	sf::Font font1;
+	if (!font1.loadFromFile("grafika/arial.ttf")) {}
+	sf::Text hp_text;
+	hp_text.setFont(font1);
+	hp_text.setCharacterSize(36);
+	hp_text.setFillColor(sf::Color::Red);
+	hp_text.setStyle(sf::Text::Bold);
+	hp_text.setPosition(10, 10);
+
+	sf::Text points_text;
+	points_text.setFont(font1);
+	points_text.setCharacterSize(36);
+	points_text.setFillColor(sf::Color::Red);
+	points_text.setStyle(sf::Text::Bold);
+	points_text.setPosition(10, 100);
 
 	//Inicjacja//
 
@@ -123,12 +143,12 @@ int main()
 	*/
 
 	//Tworzenie pociskow
-	for (int i = 0; i < 50; ++i)
-		bullet[i] = new pocisk[50];
+	for (int i = 0; i < 60; ++i)
+		bullet[i] = new pocisk[60];
 
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 11; i++)
 	{
-		for (int j = 0; j < 5; j++)
+		for (int j = 0; j < 8; j++)
 		{
 			bullet[i][j].pozycja(5000, 5000);
 			bullet[i][j].przydziel(1);
@@ -195,10 +215,15 @@ int main()
 			sf::Time t4 = clock4.getElapsedTime();
 
 
-			if (t2.asMilliseconds() > 100.0f)
+			if (t2.asMilliseconds() > 1000.0f)
 			{
 
-				enemy[rand() % 11].wystrzal(bullet);
+				//enemy[rand() % 11].wystrzal(bullet);
+
+				for (int i = 0; i < 11; i++)
+				{
+					enemy[i].wystrzal(bullet);
+				}
 
 				clock2.restart();
 				
@@ -210,7 +235,17 @@ int main()
 				clock3.restart();
 			}
 
-			
+			//Licznik hp
+			ostringstream ss1;
+			ss1 << player.hp;
+			string hp_stext = "HP: " + ss1.str();
+			hp_text.setString(hp_stext);
+
+			//Punkty
+			ostringstream ss2;
+			ss2 << player.punkty;
+			string points_stext = "Points: " + ss2.str();
+			points_text.setString(points_stext);
 
 			keyboard();//Sprawdzanie klawiatury
 
@@ -234,6 +269,9 @@ int main()
 
 			sciana3.setPosition(1, 800);
 			renderWindow.draw(sciana3);
+
+			renderWindow.draw(hp_text);
+			renderWindow.draw(points_text);
 
 
 			//Rysowanie wrogow
@@ -296,9 +334,9 @@ int main()
 			}
 
 
-			for (int i = 0; i < 5; i++)
+			for (int i = 0; i < 11; i++)
 			{
-				for (int j = 0; j < 5; j++)
+				for (int j = 0; j < 8; j++)
 				{
 					bullet[i][j].wyswietl(renderWindow);
 					bullet[i][j].ruch();
@@ -330,7 +368,7 @@ int main()
 			{
 				if (Collision::PixelPerfectTest(player.zwroc(), enemy[i].zwroc(), 0))
 				{
-					std::cout << "[" << t1.asSeconds() << "] " << "Kolizja statku z wrogiem" << "i" << i << std::endl;
+					//X//std::cout << "[" << t1.asSeconds() << "] " << "Kolizja statku z wrogiem" << "i" << i << std::endl;
 					player.pozycja(13000, 13000);
 				}
 			}
@@ -338,10 +376,7 @@ int main()
 			{
 				for (int j = 0; j < 12; j++)
 				{
-					if (Collision::PixelPerfectTest(sciana3, bullet[i][j].zwroc(), 0))
-					{
-						bullet[i][j].pozycja(5000, 10);
-					}
+					
 
 					if (Collision::PixelPerfectTest(player.zwroc(), bullet[i][j].zwroc(), 0))
 					{
@@ -349,16 +384,14 @@ int main()
 						
 						player.hp -= bullet[i][j].power;
 
-						std::cout << "[" << t1.asSeconds() << "] " << "Kolizja statku z pociskiem wroga " << "[i]" << i  << " [j]" << j << std::endl;
+						//X//std::cout << "[" << t1.asSeconds() << "] " << "Kolizja statku z pociskiem wroga " << "[i]" << i  << " [j]" << j << std::endl;
 						//exit(1);
 
 						
-						cout << "3" << endl;
-						cout << "player.hp = " << player.hp << endl;
+						//X//cout << "player.hp = " << player.hp << endl;
 						
 						if (player.hp <= 0)
 						{
-							cout << "9" << endl;
 							player.pozycja(13000, 13000);
 						}
 
@@ -371,19 +404,43 @@ int main()
 
 			for (int i = 0; i < 12; i++)
 			{
+				for (int j = 0; j < 8; j++)
+				{
+					if (Collision::PixelPerfectTest(sciana3, bullet[i][j].zwroc(), 0))
+					{
+						bullet[i][j].pozycja(4000, 10);
+						//bullet[i][j].zwolnienie();
+						enemy[i].uzytypocisk[j] = false;
+						cout << "Zwalniam [" << i << "][" << j << "]" << endl;
+						cout << "||" << endl;
+						cout << "enemy[i].uzytypocisk[j] = " << enemy[i].uzytypocisk[j] << endl;
+						//Sleep(100);
+						//bullet[i][j].pocisk_w_uzyciu = 0;
+
+
+					}
+				}
+			}
+
+			for (int i = 0; i < 12; i++)
+			{
 				for (int j = 0; j < 30; j++)
 				{
 						if (Collision::PixelPerfectTest(enemy[i].zwroc(), bullet_player[j].zwroc(), 0))
 						{
-							std::cout << bullet_player[j].used << endl;
+							//X//std::cout << bullet_player[j].used << endl;
 							if (bullet_player[j].used == 0)
 							{
 								
 
 								enemy[i].hp -= bullet_player[j].power;
-								std::cout << "[" << t1.asSeconds() << "] " << "Kolizja wroga z pociskiem playera" << "[i]" << i << "hp: " << enemy[i].hp << std::endl;
-						
-								
+								//X//std::cout << "[" << t1.asSeconds() << "] " << "Kolizja wroga z pociskiem playera" << "[i]" << i << "hp: " << enemy[i].hp << std::endl;
+								player.punkty += 50;
+								enemy[i].id_skin = 3;
+								enemy[i].zmien_teksture();
+
+
+
 
 								if (enemy[i].hp <= 0)
 								{
@@ -449,4 +506,3 @@ void autostrzal()
 	//numer_pocisku_gracza++;
 	//bullet_player[numer_pocisku_gracza].pozycja(player.x + 80, player.y - 80);
 }
-

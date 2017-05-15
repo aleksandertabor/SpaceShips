@@ -2,10 +2,10 @@
 #include "wrog.h"
 #include "pocisk.h"
 
-
-int wrog::stworz(int id, int id_skin)
+int wrog::stworz(int id, int id_fskin)
 {
 	id_wroga = id;
+	id_skin = id_fskin;
 	//cout << "Stworzono nowego wroga. ID=" << id_wroga << endl;
 	if (!t_wrog.loadFromFile(tekstury[id_skin]))
 		return EXIT_FAILURE;
@@ -26,6 +26,16 @@ int wrog::stworz(int id, int id_skin)
 	{
 		hp = 300;
 	}
+
+	return 0;
+}
+
+int wrog::zmien_teksture()
+{
+	if (!t_wrog.loadFromFile(tekstury[id_skin]))
+		return EXIT_FAILURE;
+
+	s_wrog.setTexture(t_wrog);
 
 	return 0;
 }
@@ -74,7 +84,7 @@ int wrog::strzelaj(sf::RenderWindow & renderWindow, pocisk ** bullet, int id_poc
 	//cout << "Wrog ID=" << id_wroga << ". Strzelil swoim pociskiem ID=" << id_pocisku << endl;
 
 
-	bullet[id_wroga][id_pocisku].pozycja(x, y);
+	//bullet[id_wroga][id_pocisku].pozycja(x, y);
 
 
 
@@ -83,10 +93,23 @@ int wrog::strzelaj(sf::RenderWindow & renderWindow, pocisk ** bullet, int id_poc
 
 int wrog::wystrzal(pocisk ** bullet)
 {
-	bullet[id_wroga][id_poc].pozycja(wrog::posx() + 85, wrog::posy() + 140);
-	zuzyty = 1;
-	//printf("%i", id_poc);
-	id_poc++;
+
+
+	for (int i = 0; i < 8; i++)
+	{
+		cout << "WROG = " << id_wroga << " i = " << i << " || (int)uzytypocisk[i] == " << (int)uzytypocisk[i] << endl;	
+	}
+
+	for (int i = 0; i < 8; i++)
+	{
+		if (uzytypocisk[i] == false)
+		{
+			bullet[id_wroga][i].pozycja(wrog::posx() + 85, wrog::posy() + 140);
+			uzytypocisk[i] = true;
+			i = 90;
+		}
+	}
+
 	return 0;
 }
 
@@ -123,7 +146,7 @@ int wrog::kolizja_sciana(sf::Sprite sprite1, sf::Sprite sprite2)
 {
 	if (Collision::PixelPerfectTest(wrog::zwroc(), sprite1, 0))
 	{
-		cout << "kolizja_sciana_prawa" << endl;
+		//X//cout << "kolizja_sciana_prawa" << endl;
 		//zmiana kierunku i wysokosci
 		w_kierunek = 1;
 		w_predkosc = 10;
@@ -132,7 +155,7 @@ int wrog::kolizja_sciana(sf::Sprite sprite1, sf::Sprite sprite2)
 
 	if (Collision::PixelPerfectTest(wrog::zwroc(), sprite2, 0))
 	{
-		cout << "kolizja_sciana_lewa" << endl;
+		//X//cout << "kolizja_sciana_lewa" << endl;
 		//zmiana kierunku i wysokosci
 		w_kierunek = 4;
 		w_predkosc = 10;

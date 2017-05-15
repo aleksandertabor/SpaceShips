@@ -10,12 +10,14 @@ public:
 	int y = 0;
 	int id_wroga = 0;
 	int id_pocisku = 0;
-	int zuzyty = 0;
+	//int zuzyty = 0;
 	int id_poc = 0;
+	bool uzytypocisk[8] = { false, false, false, false, false, false, false, false };//true=used, false=non-used
 	int w_kierunek = 4;
 	int w_predkosc = 10;
-	string tekstury[5] = { "grafika/enemy1.png","grafika/enemy2.png","","","" };
+	string tekstury[5] = { "grafika/enemy1.png","grafika/enemy2.png","grafika/enemy1_dostal.png","grafika/enemy2_dostal.png","" };
 	int hp = 100;
+	int id_skin = 0;
 
 	sf::Texture t_wrog;
 	sf::Sprite s_wrog;
@@ -27,6 +29,7 @@ public:
 	int wrog::wystrzal(pocisk ** bullet);
 	int wrog::posx();
 	int wrog::posy();
+	int wrog::zmien_teksture();
 	sf::Sprite wrog::zwroc();
 	int wrog::ruch();
 	int wrog::kolizja_sciana(sf::Sprite sprite1, sf::Sprite sprite2);

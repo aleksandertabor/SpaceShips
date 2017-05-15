@@ -11,6 +11,7 @@ public:
 	int id_skin = 0;
 	string tekstury[5] = { "grafika/pocisk1.png","grafika/pocisk2.png","","","" };
 	int used = 0;
+	int pocisk_w_uzyciu = 1;
 
 	sf::Texture t_pocisk;
 	sf::Sprite s_pocisk;
@@ -25,4 +26,5 @@ public:
 	int pocisk::usun();
 	sf::Sprite pocisk::zwroc();
 	int pocisk::ruch();
+	int pocisk::zwolnienie();
 };
