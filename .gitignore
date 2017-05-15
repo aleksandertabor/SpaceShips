@@ -48,5 +48,6 @@ Temporary Items
 
 Debug/
 SpaceShips/Debug/
+Release/
 *.db
 *.opendb
