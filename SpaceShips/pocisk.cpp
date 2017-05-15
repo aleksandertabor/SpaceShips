@@ -12,7 +12,7 @@ int pocisk::przydziel(int x)
 	s_pocisk.setTexture(t_pocisk);
 	if (!t_pocisk2.loadFromFile(tekstury[0])) { return EXIT_FAILURE; }
 	s_pocisk2.setTexture(t_pocisk2);
-
+	pocisk_w_uzyciu = 1;
 	used = 0;
 	id_skin = x;
 	if (id_skin == 1)
@@ -36,6 +36,16 @@ int pocisk::pozycja(int a, int b)
 	//s_pocisk.setPosition(300, 300);
 	x = a;
 	y = b;
+	return 0;
+}
+
+int pocisk::zwolnienie()
+{
+
+	cout << "ZWOLNIENIE()" << endl;
+	Sleep(200);
+	pocisk_w_uzyciu = 0;
+
 	return 0;
 }
 

@@ -16,6 +16,7 @@ public:
 	int w_kierunek = 4;
 	int w_predkosc = 10;
 	int numer_pocisku_gracza = -1;
+	int punkty = 0;
 
 	sf::Texture t_statek;
 	sf::Sprite s_statek;
