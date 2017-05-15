@@ -1,22 +1,38 @@
-#include "stdatx.h"
+#include "stdafx.h"
 #include "wrog.h"
 #include "pocisk.h"
 
-int wrog::stworz(int id)
+
+int wrog::stworz(int id, int id_skin)
 {
 	id_wroga = id;
 	//cout << "Stworzono nowego wroga. ID=" << id_wroga << endl;
-	if (!t_wrog.loadFromFile(tekstura))
+	if (!t_wrog.loadFromFile(tekstury[id_skin]))
 		return EXIT_FAILURE;
 
 	s_wrog.setTexture(t_wrog);
+
+	if (id_skin == 0)
+	{
+		hp = 100;
+	}
+
+	if (id_skin == 1)
+	{
+		hp = 150;
+	}
+
+	if (id_skin == 2)
+	{
+		hp = 300;
+	}
 
 	return 0;
 }
 
 int wrog::pozycja(int a, int b)
 {
-	s_wrog.setPosition(a, b);
+	s_wrog.setPosition((float)a, (float)b);
 	x = a;
 	y = b;
 	return 0;
@@ -35,7 +51,7 @@ int wrog::posy()
 
 int wrog::wyswietl(sf::RenderWindow & renderWindow)
 {
-	s_wrog.setPosition(x, y);
+	s_wrog.setPosition((float)x, (float)y);
 	renderWindow.draw(s_wrog);
 	return 0;
 }
@@ -111,7 +127,7 @@ int wrog::kolizja_sciana(sf::Sprite sprite1, sf::Sprite sprite2)
 		//zmiana kierunku i wysokosci
 		w_kierunek = 1;
 		w_predkosc = 10;
-		y += 50;
+		y += 41;
 	}
 
 	if (Collision::PixelPerfectTest(wrog::zwroc(), sprite2, 0))
@@ -120,8 +136,9 @@ int wrog::kolizja_sciana(sf::Sprite sprite1, sf::Sprite sprite2)
 		//zmiana kierunku i wysokosci
 		w_kierunek = 4;
 		w_predkosc = 10;
-		y += 50;
+		y += 41;
 	}
 	
 	return 0;
 }
+

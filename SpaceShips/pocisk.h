@@ -1,15 +1,16 @@
 #pragma once
 
-#include "stdatx.h"
+#include "stdafx.h"
 
 class pocisk
 {
 public:
 	int x = 500;
 	int y = 500;
-	int ktory = 0;
-	string tekstura = "grafika/pocisk.png";
-	string tekstura_2 = "grafika/pocisk2.png";
+	int power = 1;
+	int id_skin = 0;
+	string tekstury[5] = { "grafika/pocisk1.png","grafika/pocisk2.png","","","" };
+	int used = 0;
 
 	sf::Texture t_pocisk;
 	sf::Sprite s_pocisk;
