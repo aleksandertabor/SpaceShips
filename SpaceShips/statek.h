@@ -10,13 +10,14 @@ public:
 	int y = 580;
 	int id_statku = 0;
 	string tekstury[5] = { "grafika/player1.png","","","","" };
-	int hp = 100;
+	int hp = 1; 
 	int zuzyty = 0;
 	int id_poc = 0;
 	int w_kierunek = 4;
 	int w_predkosc = 10;
 	int numer_pocisku_gracza = -1;
 	int punkty = 0;
+	bool uzytypocisk[50] = { false, false, false, false, false, false, false, false, false, false,false, false, false, false, false, false, false, false, false, false,false, false, false, false, false, false, false, false, false, false,false, false, false, false, false, false, false, false, false, false,false, false, false, false, false, false, false, false, false, false };//true=used, false=non-used
 
 	sf::Texture t_statek;
 	sf::Sprite s_statek;
@@ -25,7 +26,7 @@ public:
 	int statek::pozycja(int a, int b);
 	int statek::wyswietl(sf::RenderWindow & renderWindow);
 	int statek::strzelaj(sf::RenderWindow & renderWindow, pocisk * bullet_player, int id_pocisku, int x, int y);
-	int statek::wystrzal(pocisk ** bullet);
+	//int statek::wystrzal(pocisk ** bullet);
 	int statek::posx();
 	int statek::posy();
 	sf::Sprite statek::zwroc();
