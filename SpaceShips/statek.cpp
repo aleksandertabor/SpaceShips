@@ -14,7 +14,7 @@ int statek::stworz(int id, int id_skin)
 
 	if (id_skin == 0)
 	{
-		hp = 100;
+		hp = 10000;
 	}
 
 	if (id_skin == 1)
@@ -81,14 +81,14 @@ int statek::strzelaj(sf::RenderWindow & renderWindow, pocisk * bullet_player, in
 	return 0;
 }
 
-int statek::wystrzal(pocisk ** bullet)
-{
-	bullet[id_statku][id_poc].pozycja(statek::posx() + 85, statek::posy() + 140);
-	zuzyty = 1;
-	//printf("%i", id_poc);
-	id_poc++;
-	return 0;
-}
+//int statek::wystrzal(pocisk ** bullet)
+//{
+//	bullet[id_statku][id_poc].pozycja(statek::posx() + 85, statek::posy() + 140);
+//	zuzyty = 1;
+//	//printf("%i", id_poc);
+//	id_poc++;
+//	return 0;
+//}
 
 int statek::ruch()
 {
@@ -144,6 +144,19 @@ int statek::kolizja_sciana(sf::Sprite sprite1, sf::Sprite sprite2)
 
 void statek::autostrzal(sf::RenderWindow & renderWindow, pocisk * bullet_player, int id_pocisku)
 {
-	numer_pocisku_gracza++;
-	bullet_player[numer_pocisku_gracza].pozycja(x + 45, y - 50);
+
+	for (int i = 0; i < 50; i++)
+	{
+		cout << "POCISK = " << id_pocisku << " i = " << i << " || (int)uzytypocisk[i] == " << (int)uzytypocisk[i] << endl;
+	}
+
+	for (int i = 0; i < 50; i++)
+	{
+		if (uzytypocisk[i] == false)
+		{
+			bullet_player[i].pozycja(x + 45, y - 50);
+			uzytypocisk[i] = true;
+			i = 90;
+		}
+	}
 }

@@ -97,14 +97,14 @@ int wrog::wystrzal(pocisk ** bullet)
 
 	for (int i = 0; i < 8; i++)
 	{
-		cout << "WROG = " << id_wroga << " i = " << i << " || (int)uzytypocisk[i] == " << (int)uzytypocisk[i] << endl;	
+		//cout << "WROG = " << id_wroga << " i = " << i << " || (int)uzytypocisk[i] == " << (int)uzytypocisk[i] << endl;	
 	}
 
 	for (int i = 0; i < 8; i++)
 	{
 		if (uzytypocisk[i] == false)
 		{
-			bullet[id_wroga][i].pozycja(wrog::posx() + 85, wrog::posy() + 140);
+			bullet[id_wroga][i].pozycja(wrog::posx() + 40, wrog::posy() + 140);
 			uzytypocisk[i] = true;
 			i = 90;
 		}
