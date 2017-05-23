@@ -264,6 +264,22 @@ int main()
 
 				player.zwroc().setPosition((float)player.x, (float)player.y);//Ustalenie pozycji statku
 
+				if (player.punkty == 900)
+				{
+					player.punkty += 500;
+					enemy[9].dodaj(200, 0, 4, 150, 1);
+					enemy[3].dodaj(200, 200, 4, 100, 0);
+				}
+
+				if (player.punkty == 1550)
+				{
+					player.punkty += 500;
+					enemy[8].dodaj(200, 0, 4, 150, 1);
+					enemy[9].dodaj(400, 0, 4, 150, 1);
+					enemy[2].dodaj(200, 200, 4, 100, 0);
+					enemy[3].dodaj(400, 200, 4, 100, 0);
+				}
+
 
 
 													   //Rysowanie sprite'ow
@@ -283,6 +299,11 @@ int main()
 
 				renderWindow.draw(hp_text);
 				renderWindow.draw(points_text);
+
+
+
+
+
 
 
 				//Rysowanie wrogow
@@ -536,8 +557,9 @@ void keyboard()
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::L))
 	{
-		enemy[9].pozycja(200,0);
-		enemy[9].w_kierunek = 4;
+		enemy[9].dodaj(200, 0, 4, 150, 1);
+		enemy[3].dodaj(200, 200, 4, 100, 0);
+
 	}
 }
 

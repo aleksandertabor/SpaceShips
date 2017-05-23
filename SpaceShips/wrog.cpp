@@ -58,6 +58,16 @@ int wrog::posy()
 	return y;
 }
 
+int wrog::dodaj(int a, int b, int c, int d, int e)
+{
+	pozycja(a, b);
+	w_kierunek = c;
+	hp = d;
+	id_skin = e;
+	zmien_teksture();
+	return 0;
+}
+
 
 int wrog::wyswietl(sf::RenderWindow & renderWindow)
 {

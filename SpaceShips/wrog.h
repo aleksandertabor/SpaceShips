@@ -22,6 +22,7 @@ public:
 	sf::Texture t_wrog;
 	sf::Sprite s_wrog;
 
+	int wrog::dodaj(int a, int b, int c, int d, int e);
 	int wrog::stworz(int id, int id_skin);
 	int wrog::pozycja(int a, int b);
 	int wrog::wyswietl(sf::RenderWindow & renderWindow);
