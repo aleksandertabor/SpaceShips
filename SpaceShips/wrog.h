@@ -12,7 +12,7 @@ public:
 	int id_pocisku = 0;
 	//int zuzyty = 0;
 	int id_poc = 0;
-	bool uzytypocisk[8] = { false, false, false, false, false, false, false, false };//true=used, false=non-used
+	bool uzytypocisk[8];//true=used, false=non-used
 	int w_kierunek = 0;
 	int w_predkosc = 4;
 	string tekstury[5] = { "grafika/wrogus1.png","grafika/wrogus2.png","grafika/enemy1_dostal.png","grafika/wrogus2_dostal.png","" };

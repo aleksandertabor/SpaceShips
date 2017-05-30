@@ -14,7 +14,7 @@ int statek::stworz(int id, int id_skin)
 
 	if (id_skin == 0)
 	{
-		hp = 10000;
+		hp = 100;
 	}
 
 	if (id_skin == 1)
