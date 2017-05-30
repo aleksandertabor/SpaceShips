@@ -6,7 +6,7 @@
 class statek
 {
 public:
-	int x = 500;
+	int x = 640;
 	int y = 580;
 	int id_statku = 0;
 	string tekstury[5] = { "grafika/stateczek.png","","","","" };
