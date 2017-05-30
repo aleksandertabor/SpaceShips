@@ -9,7 +9,7 @@ public:
 	int y = 500;
 	int power = 1;
 	int id_skin = 0;
-	string tekstury[5] = { "grafika/pocisk1.png","grafika/pocisk2.png","","","" };
+	string tekstury[5] = { "grafika/pocisk6.png","grafika/pocisk5.png","","","" };
 	int used = 0;
 	int pocisk_w_uzyciu = 1;
 	

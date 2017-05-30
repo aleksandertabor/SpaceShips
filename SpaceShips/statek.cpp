@@ -145,16 +145,16 @@ int statek::kolizja_sciana(sf::Sprite sprite1, sf::Sprite sprite2)
 void statek::autostrzal(sf::RenderWindow & renderWindow, pocisk * bullet_player, int id_pocisku)
 {
 
-	for (int i = 0; i < 50; i++)
-	{
-		cout << "POCISK = " << id_pocisku << " i = " << i << " || (int)uzytypocisk[i] == " << (int)uzytypocisk[i] << endl;
-	}
+	//for (int i = 0; i < 50; i++)
+	//{
+		//cout << "POCISK = " << id_pocisku << " i = " << i << " || (int)uzytypocisk[i] == " << (int)uzytypocisk[i] << endl;
+	//}
 
 	for (int i = 0; i < 50; i++)
 	{
 		if (uzytypocisk[i] == false)
 		{
-			bullet_player[i].pozycja(x + 45, y - 50);
+			bullet_player[i].pozycja(x + 25, y - 50);
 			uzytypocisk[i] = true;
 			i = 90;
 		}

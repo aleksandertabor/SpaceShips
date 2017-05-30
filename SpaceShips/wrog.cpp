@@ -114,7 +114,7 @@ int wrog::wystrzal(pocisk ** bullet)
 	{
 		if (uzytypocisk[i] == false)
 		{
-			bullet[id_wroga][i].pozycja(wrog::posx() + 40, wrog::posy() + 140);
+			bullet[id_wroga][i].pozycja(wrog::posx() + 14, wrog::posy() + 80);
 			uzytypocisk[i] = true;
 			i = 90;
 		}
@@ -159,8 +159,8 @@ int wrog::kolizja_sciana(sf::Sprite sprite1, sf::Sprite sprite2)
 		//X//cout << "kolizja_sciana_prawa" << endl;
 		//zmiana kierunku i wysokosci
 		w_kierunek = 1;
-		w_predkosc = 10;
-		y += 41;
+		//w_predkosc = 5;
+		y += 40;
 	}
 
 	if (Collision::PixelPerfectTest(wrog::zwroc(), sprite2, 0))
@@ -168,8 +168,8 @@ int wrog::kolizja_sciana(sf::Sprite sprite1, sf::Sprite sprite2)
 		//X//cout << "kolizja_sciana_lewa" << endl;
 		//zmiana kierunku i wysokosci
 		w_kierunek = 4;
-		w_predkosc = 10;
-		y += 41;
+		//w_predkosc = 5;
+		y += 40;
 	}
 	
 	return 0;
