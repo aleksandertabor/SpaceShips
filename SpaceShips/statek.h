@@ -9,7 +9,7 @@ public:
 	int x = 500;
 	int y = 580;
 	int id_statku = 0;
-	string tekstury[5] = { "grafika/player1.png","","","","" };
+	string tekstury[5] = { "grafika/stateczek.png","","","","" };
 	int hp = 1; 
 	int zuzyty = 0;
 	int id_poc = 0;

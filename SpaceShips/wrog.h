@@ -14,8 +14,8 @@ public:
 	int id_poc = 0;
 	bool uzytypocisk[8] = { false, false, false, false, false, false, false, false };//true=used, false=non-used
 	int w_kierunek = 0;
-	int w_predkosc = 10;
-	string tekstury[5] = { "grafika/enemy1.png","grafika/enemy2.png","grafika/enemy1_dostal.png","grafika/enemy2_dostal.png","" };
+	int w_predkosc = 4;
+	string tekstury[5] = { "grafika/wrogus1.png","grafika/wrogus2.png","grafika/enemy1_dostal.png","grafika/wrogus2_dostal.png","" };
 	int hp = 100;
 	int id_skin = 0;
 

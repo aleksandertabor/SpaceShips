@@ -10,6 +10,7 @@
 void keyboard();
 void autostrzal();
 
+
 //Obiekty
 sf::RenderWindow renderWindow(sf::VideoMode(1280, 720), "SpaceShips");
 //sf::RenderWindow renderWindow(sf::VideoMode(1280, 720), "Gra 2D", sf::Style::Fullscreen);
@@ -24,13 +25,23 @@ pocisk * bullet_player = new pocisk[50];//Pocisk gracza
 										 //Zmienne
 										 //Statek
 int statek_x = 550;
-int statek_y = 580;
+int statek_y = 58;
 int numer_pocisku_gracza = -1;
+bool wrog_na_ekranie[13];
+bool uzytywrog[13];
+int random = 0;
 
 
 int main()
 {
 
+	
+	sf::Texture background;
+	background.loadFromFile("grafika/background.png");
+
+	sf::Sprite transp;
+	transp.setTexture(background);
+	transp.setColor(sf::Color(255, 255, 255, 128));
 
 
 		sf::Clock main_clock;
@@ -57,7 +68,7 @@ int main()
 
 		//Ladowanie tekstur
 		sf::Texture t_tlo;
-		if (!t_tlo.loadFromFile("grafika/tlo.png"))
+		if (!t_tlo.loadFromFile("grafika/tlo2.jpeg"))
 			return EXIT_FAILURE;
 		sf::Sprite tlo;
 		tlo.setTexture(t_tlo);
@@ -84,7 +95,19 @@ int main()
 		sciana3.setTexture(t_sciana3);
 
 		sf::Font font1;
-		if (!font1.loadFromFile("grafika/arial.ttf")) {}
+		if (!font1.loadFromFile("grafika/good times rg.ttf")) {}
+		sf::Font font2;
+		if (!font2.loadFromFile("grafika/good times rg.ttf")) {}
+
+
+		sf::Text pauza_t;
+		pauza_t.setFont(font2);
+		pauza_t.setCharacterSize(60);
+		pauza_t.setFillColor(sf::Color::White);
+		pauza_t.setStyle(sf::Text::Bold);
+		pauza_t.setPosition(500, 250);
+
+
 		sf::Text hp_text;
 		hp_text.setFont(font1);
 		hp_text.setCharacterSize(36);
@@ -123,12 +146,12 @@ int main()
 		enemy[3].pozycja(4 * 180 + 1, 100);
 		enemy[4].pozycja(5 * 180 + 1, 100);
 		enemy[5].pozycja(6 * 180 + 1, 100);
-		enemy[6].pozycja(1 * 180 + 1, 210);
-		enemy[7].pozycja(2 * 180 + 1, 210);
-		enemy[8].pozycja(3 * 180 + 1, 210);
-		enemy[9].pozycja(4 * 180 + 1, 210);
-		enemy[10].pozycja(5 * 180 + 1, 210);
-		enemy[11].pozycja(6 * 180 + 1, 210);
+		enemy[6].pozycja(1 * 180 + 1, 260);
+		enemy[7].pozycja(2 * 180 + 1, 260);
+		enemy[8].pozycja(3 * 180 + 1, 260);
+		enemy[9].pozycja(4 * 180 + 1, 260);
+		enemy[10].pozycja(5 * 180 + 1, 260);
+		enemy[11].pozycja(6 * 180 + 1, 260);
 		enemy[12].pozycja(5000, 10);
 
 		for (int i = 0; i < liczba_statkow; i++)
@@ -213,6 +236,9 @@ int main()
 		//Fizyka gry---------------------------------------------------------------------------
 		while (renderWindow.isOpen())
 		{
+
+	
+
 			sf::Time main_time = main_clock.getElapsedTime();
 			if (main_time.asMilliseconds() > 1000.0f / 60.0f)
 			{
@@ -226,21 +252,12 @@ int main()
 				sf::Time t4 = clock4.getElapsedTime();
 
 
-				if (t2.asMilliseconds() > 1000.0f)
-				{
 
-					//enemy[rand() % 11].wystrzal(bullet);
 
-					for (int i = 0; i < liczba_statkow; i++)
-					{
-						enemy[i].wystrzal(bullet);
-					}
 
-					clock2.restart();
 
-				}
 
-				if (t3.asMilliseconds() > 1000.0f)
+				if (t3.asMilliseconds() > 600.0f)
 				{
 					player.autostrzal(renderWindow, bullet_player, 0);
 					clock3.restart();
@@ -257,6 +274,11 @@ int main()
 				ss2 << player.punkty;
 				string points_stext = "Points: " + ss2.str();
 				points_text.setString(points_stext);
+
+				//Pauza
+				ostringstream ss3;
+				string pauza = "PAUSE";
+				pauza_t.setString(pauza);
 
 				keyboard();//Sprawdzanie klawiatury
 
@@ -281,8 +303,6 @@ int main()
 				}
 
 
-
-													   //Rysowanie sprite'ow
 				renderWindow.draw(tlo);
 
 				renderWindow.draw(player.zwroc());//
@@ -300,7 +320,63 @@ int main()
 				renderWindow.draw(hp_text);
 				renderWindow.draw(points_text);
 
+				if (player.punkty == 2350)
+				{
+					cout << "Winer!" << endl;
+					player.punkty += 1000;
+				}
 
+
+				for (int i = 0; i < liczba_statkow; i++)
+				{
+					if (enemy[i].x > -2 && enemy[i].x < 1282 && enemy[i].y > -2 && enemy[i].y < 722)
+					{
+						wrog_na_ekranie[i] = true;
+					}
+					else
+					{
+						wrog_na_ekranie[i] = false;
+					}
+				}
+
+				int vcx = 0;
+
+				if (player.punkty < 2340)
+				{
+					while (vcx != 90)
+					{
+						random = rand() % 12;
+						if (wrog_na_ekranie[random] == true)
+						{
+							vcx = 90;
+							//cout << "TAK " << random << endl;
+						}
+						else
+						{
+							//cout << "NIE " << random << endl;
+						}
+					}
+				}
+
+
+				if (t2.asMilliseconds() > 1000.0f)
+				{
+					enemy[random].wystrzal(bullet);
+					uzytywrog[random] = true;
+					//cout << random << endl;
+
+					//for (int i = 0; i < liczba_statkow; i++)
+					//{
+					//	enemy[i].wystrzal(bullet);
+					//}
+
+					clock2.restart();
+				}
+
+
+
+													   //Rysowanie sprite'ow
+				
 
 
 
@@ -311,7 +387,6 @@ int main()
 				{
 					enemy[i].wyswietl(renderWindow);
 				}
-
 
 
 				//Zmiana pozycji pociskow
@@ -370,6 +445,7 @@ int main()
 				{
 					for (int j = 0; j < 8; j++)
 					{
+						
 						bullet[i][j].wyswietl(renderWindow);
 						bullet[i][j].ruch();
 					}
@@ -386,6 +462,10 @@ int main()
 				}
 
 
+				// PAUZA I TLO PRZEZROCZYSTE
+				//renderWindow.draw(transp);
+				//renderWindow.draw(pauza_t);
+				
 
 				//Rysowanie calej gry
 				renderWindow.display();
@@ -553,6 +633,11 @@ void keyboard()
 	{
 		bullet_player[0].pozycja(500, 500);
 		Sleep(200);
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
+	{
+
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::L))

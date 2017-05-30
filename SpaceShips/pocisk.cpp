@@ -78,8 +78,8 @@ sf::Sprite pocisk::zwroc()
 int pocisk::ruch()
 {
 	if (id_skin == 1)
-	pozycja(x, y + 2);
+	pozycja(x, y + 3);
 	if (id_skin == 2)
-	pozycja(x, y - 2);
+	pozycja(x, y - 3);
 	return 0;
 }
