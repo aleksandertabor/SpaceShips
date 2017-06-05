@@ -602,9 +602,6 @@ int main()
 				}
 
 
-
-
-
 				for (int i = 0; i < liczba_statkow; i++)
 				{
 					enemy[i].ruch();
