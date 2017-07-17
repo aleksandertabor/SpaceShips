@@ -1,8 +1,8 @@
 ## General
-SpaceShips game written in C++ language, using SFML library. <br />
+<b>SpaceShips</b> game written in C++ language, using SFML library. <br />
 The project was created in Microsoft Visual Studio 2015. <br />
 <br />
-Download game here: <a href="https://github.com/alexiosanportable/SpaceShips/raw/master/Game%20installer/SpaceShips%20v0.1.2%20-%20Installer.exe">SpaceShips</a>
+<b>Download game here: <a href="https://github.com/alexiosanportable/SpaceShips/raw/master/Game%20installer/SpaceShips%20v0.1.2%20-%20Installer.exe">SpaceShips</a></b>
 
 ## Screens
 ![alt text](https://raw.githubusercontent.com/alexiosanportable/SpaceShips/0.2/SpaceShips/grafika/screens/screen1.png) <br />
