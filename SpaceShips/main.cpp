@@ -10,8 +10,8 @@
 void keyboard();
 
 //Obiekty
-sf::RenderWindow renderWindow(sf::VideoMode(1280, 720), "SpaceShips");
-//sf::RenderWindow renderWindow(sf::VideoMode(1280, 720), "SpaceShips", sf::Style::Fullscreen);
+//sf::RenderWindow renderWindow(sf::VideoMode(1280, 720), "SpaceShips");
+sf::RenderWindow renderWindow(sf::VideoMode(1280, 720), "SpaceShips", sf::Style::Fullscreen);
 sf::Event event;
 
 int liczba_statkow = 50;
