@@ -1,0 +1,2 @@
+Do not add objects below -14000 px.
+You must leave a blank line at the end of each CSV file.

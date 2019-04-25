@@ -7,7 +7,7 @@
     </Filter>
     <Filter Include="Header Files">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
@@ -18,16 +18,25 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="pocisk.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="wrog.cpp">
+    <ClCompile Include="Bullet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Collision.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="statek.cpp">
+    <ClCompile Include="CsvFiles.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Gift.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
@@ -35,16 +44,25 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="pocisk.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="wrog.h">
+    <ClInclude Include="Bullet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Collision.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="statek.h">
+    <ClInclude Include="CsvFiles.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Gift.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="stdafx.h">
