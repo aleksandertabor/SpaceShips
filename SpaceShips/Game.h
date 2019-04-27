@@ -40,10 +40,14 @@ private:
 	const int playerHPStart = 100;
 
 	sf::RenderWindow renderWindow;
+	sf::Music music;
 	std::map<std::string, sf::Texture> textures;
 	std::map<std::string, sf::Sprite> sprites;
 	std::map<std::string, sf::Font> fonts;
 	std::map<std::string, sf::Text> texts;
+	std::map<std::string, sf::SoundBuffer> soundBuffers;
+	std::map<std::string, sf::Sound> sounds;
+	std::map<std::string, std::pair<std::string, bool> > tracks;
 
 	Player player;
 	std::vector<Enemy*> enemies;
@@ -78,4 +82,5 @@ private:
 	void init();
 	void update();
 	int loadLevel(int level);
+	int playMusic(std::string track = "menu", float speed = 1);
 };

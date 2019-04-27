@@ -45,8 +45,10 @@ void Game::update()
 	//Menu
 	case 0:
 	{
-		if (!gameIsStarted)
+		if (!gameIsStarted) {
+			playMusic("menu");
 			texts["menuOption1"].setString("START");
+		}
 		else
 			texts["menuOption1"].setString("RETURN");
 
@@ -84,8 +86,10 @@ void Game::update()
 		gameIsStarted = true;
 		presentState++;
 
-		if (presentState % playerBulletSpeed == 0)
+		if (presentState % playerBulletSpeed == 0) {
+			sounds["shootingPlayer"].play();
 			player.bullets.push_back(new Bullet(player.getX() + (int)(player.getSprite().getTexture()->getSize().x / 2) - (int)(tBullet2.getSprite().getTexture()->getSize().x / 2), player.getY() - (int)(player.getSprite().getTexture()->getSize().y * 0.4), 1, player.getPower()));
+		}
 
 		if (presentState % enemyBulletSpeed == 0)
 			if (!enemies.empty()) {
@@ -96,6 +100,8 @@ void Game::update()
 
 			}
 		
+
+		playMusic("levels");
 
 		texts["hp"].setString("HP: " + std::to_string(player.getHP()));
 		texts["points"].setString("Points: " + std::to_string(player.getPoints()));
@@ -173,7 +179,7 @@ void Game::update()
 		for (auto enemy : enemies)
 		{
 			//Collision of enemy with walls
-			if ((int)enemy->getX() + (int)enemy->getSprite().getTexture()->getSize().x >= (int)gameWidth)
+			if (static_cast<int>(enemy->getX()) + static_cast<int>(enemy->getSprite().getTexture()->getSize().x) >= static_cast<int>(gameWidth))
 			{
 				enemy->setDirection(1);
 				enemy->setX(enemy->getX() - enemy->getSpeed());
@@ -205,6 +211,7 @@ void Game::update()
 			for (auto bullet : player.bullets) {
 				if (Collision::PixelPerfectTest(enemy->getSprite(), bullet->getSprite(), 0))
 				{
+					sounds["explosion"].play();
 					enemy->setHP(enemy->getHP() - bullet->getPower());
 					player.setPoints(player.getPoints() + enemy->getPoints());
 					bullet->setPower(0);
@@ -315,6 +322,7 @@ void Game::update()
 
 	case 5://You lost
 	{
+		playMusic("lose");
 		texts["message"].setString("You lost, press 'N' key on keyboard!");
 		renderWindow.draw(sprites["background"]);
 		renderWindow.draw(texts["message"]);
@@ -326,6 +334,7 @@ void Game::update()
 
 	case 6://You win
 	{
+		playMusic("win");
 		texts["message"].setString("You won, press 'N' key on keyboard!");
 		renderWindow.draw(sprites["background"]);
 		renderWindow.draw(texts["message"]);
@@ -338,6 +347,11 @@ void Game::update()
 	{
 		gameIsStarted = false;
 		currentLevel = 1;
+
+		// Reset tracks history
+		for (auto t : tracks) {
+			tracks[t.first].second = false;
+		}
 
 		actualView = 8;
 	} break;
@@ -354,6 +368,7 @@ void Game::update()
 				smallestHighscoreTabIndex = i;
 			}
 		}
+
 
 		if (player.getPoints() > smallestHighscore)
 			actualView = 9;
@@ -493,16 +508,28 @@ void Game::processEvents()
 	}
 
 	//Player control
-	if (AFlag)
-		if (player.getX() >= 0)
+	if (AFlag) {
+		if (actualView == 1)
+			sounds["move"].play();
+		if (player.getX() >= 0) {
 			player.setX(player.getX() - player.getSpeed());
+		}
+			
+	}
+		
 
 
 	int rightEnd = gameWidth - player.getSprite().getTexture()->getSize().x;
 
-	if (DFlag)
-		if (player.getX() <= rightEnd)
+	if (DFlag) {
+		if (actualView == 1)
+			sounds["move"].play();
+		if (player.getX() <= rightEnd) {
 			player.setX(player.getX() + player.getSpeed());
+		}
+			
+	}
+		
 
 	//Choose name to save score and control in main menu
 	if (upFlag) {
@@ -618,6 +645,40 @@ int Game::loadAssets()
 	if (!fonts["font"].loadFromFile("Assets/good_times_rg.ttf"))
 		return EXIT_FAILURE;
 
+	//Load soundBuffers
+	sf::SoundBuffer soundBuffer;
+	soundBuffers["move"] = soundBuffer;
+	soundBuffers["shootingPlayer"] = soundBuffer;
+	soundBuffers["explosion"] = soundBuffer;
+	soundBuffers["move"].loadFromFile("Assets/Audio/move.wav");
+	soundBuffers["shootingPlayer"].loadFromFile("Assets/Audio/boom.wav");
+	soundBuffers["explosion"].loadFromFile("Assets/Audio/explosion.wav");
+
+	for (auto sb : soundBuffers)
+		if (sb.second.getDuration().asSeconds() == 0)
+			return EXIT_FAILURE;
+
+
+	//Load sounds
+	sf::Sound sound;
+	sounds["move"] = sound;
+	sounds["move"].setBuffer(soundBuffers["move"]);
+	sounds["shootingPlayer"] = sound;
+	sounds["shootingPlayer"].setBuffer(soundBuffers["shootingPlayer"]);
+	sounds["explosion"] = sound;
+	sounds["explosion"].setBuffer(soundBuffers["explosion"]);
+	sounds["shootingPlayer"].setVolume(15.f);
+	sounds["explosion"].setVolume(35.f);
+	sounds["move"].setVolume(50.f);
+
+	//Get tracklist
+	tracks["menu"] = std::make_pair("Assets/Audio/menu.wav", false);
+	tracks["levels"] = std::make_pair("Assets/Audio/levels.wav", false);
+	tracks["lastlevel"] = std::make_pair("Assets/Audio/lastlevel.wav", false);
+	tracks["lose"] = std::make_pair("Assets/Audio/lose.ogg", false);
+	tracks["win"] = std::make_pair("Assets/Audio/win.ogg", false);
+
+
 	//Load texts
 	sf::Text text;
 	texts["pause"] = text;
@@ -686,7 +747,7 @@ int Game::loadAssets()
 	texts["menuOption3"].setString("HIGHSCORES");
 	texts["menuOption4"].setString("EXIT");
 	texts["authorsTitle"].setString("AUTHORS");
-	texts["authorsContent"].setString("C++ Developers:\nAleksander Tabor\nTomasz Zurek\n\n\nGame created with SFML Library\n\nGraphics were downloaded from:\nnwww.freepik.com\n");
+	texts["authorsContent"].setString("C++ Developers:\nAleksander Tabor\nTomasz Zurek\n\nGame created with SFML Library\n\nGraphics were downloaded from:\nwww.freepik.com\n\nAudio files were downloaded from:\nwww.opengameart.org\nwww.freesound.org\n");
 	texts["level"].setString("LEVEL: 1");
 
 	texts["highscores"] = text;
@@ -715,12 +776,9 @@ int Game::loadAssets()
 	tBullet1.testInit(-100, -100, 0, 100);
 	tBullet2.testInit(-100, -100, 1, 100);
 
-	for (size_t i = 65; i <= 90; i++)
+	for (size_t i = 'A'; i <= 'Z'; i++)
 	{
-		char c = (char)i;
-		std::string s = "";
-		s += c;
-		characters.push_back(s);
+		characters.push_back( std::string("") + static_cast<char>(i) );
 	}
 
 	file2.load();
@@ -749,8 +807,12 @@ int Game::loadLevel(int level)
 	if (level > stoi(file3.matrix[0][0]))
 		return -1;
 
+	if (level == stoi(file3.matrix[0][0]))
+		playMusic("levels", 2.5);
+
 	if (level == 1)
 		player.setPoints(0);
+
 	
 	player.setHP(100);
 	player.setPower(100);
@@ -781,5 +843,30 @@ int Game::loadLevel(int level)
 		}
 	}
 
+	return 0;
+}
+
+int Game::playMusic(std::string track, float speed)
+{
+	// if current track tries to play
+	if (tracks[track].second)
+		if (speed != 1)
+			music.openFromFile(tracks[track].first);
+		else
+			return 0;
+
+	// if new track tries to play
+	if (!music.openFromFile(tracks[track].first))
+		return EXIT_FAILURE;
+	else
+		tracks[track].second = true;
+
+	music.stop();
+	music.setLoop(true);
+
+	music.setPitch(speed);
+
+	music.play();
+	
 	return 0;
 }

@@ -109,5 +109,4 @@ void Bullet::move()
 		setPosition(x, y + bulletSpeed);
 	if (idSkin == 1)
 		setPosition(x, y - bulletSpeed);
-
 }
