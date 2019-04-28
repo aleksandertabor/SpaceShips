@@ -260,6 +260,7 @@ void Game::update()
 				//Colision player with enemies ammunition
 				if (Collision::PixelPerfectTest(player.getSprite(), bullet->getSprite(), 0)) 
 				{
+					sounds["explosion"].play();
 					player.setHP(player.getHP() - bullet->getPower());
 
 					auto findBullet = find(begin(enemyBullets), end(enemyBullets), bullet);
@@ -650,9 +651,9 @@ int Game::loadAssets()
 	soundBuffers["move"] = soundBuffer;
 	soundBuffers["shootingPlayer"] = soundBuffer;
 	soundBuffers["explosion"] = soundBuffer;
-	soundBuffers["move"].loadFromFile("Assets/Audio/move.wav");
-	soundBuffers["shootingPlayer"].loadFromFile("Assets/Audio/boom.wav");
-	soundBuffers["explosion"].loadFromFile("Assets/Audio/explosion.wav");
+	soundBuffers["move"].loadFromFile("Assets/Audio/move.ogg");
+	soundBuffers["shootingPlayer"].loadFromFile("Assets/Audio/boom.ogg");
+	soundBuffers["explosion"].loadFromFile("Assets/Audio/explosion.ogg");
 
 	for (auto sb : soundBuffers)
 		if (sb.second.getDuration().asSeconds() == 0)
@@ -672,9 +673,8 @@ int Game::loadAssets()
 	sounds["move"].setVolume(50.f);
 
 	//Get tracklist
-	tracks["menu"] = std::make_pair("Assets/Audio/menu.wav", false);
-	tracks["levels"] = std::make_pair("Assets/Audio/levels.wav", false);
-	tracks["lastlevel"] = std::make_pair("Assets/Audio/lastlevel.wav", false);
+	tracks["menu"] = std::make_pair("Assets/Audio/menu.ogg", false);
+	tracks["levels"] = std::make_pair("Assets/Audio/levels.ogg", false);
 	tracks["lose"] = std::make_pair("Assets/Audio/lose.ogg", false);
 	tracks["win"] = std::make_pair("Assets/Audio/win.ogg", false);
 
@@ -736,7 +736,7 @@ int Game::loadAssets()
 
 	texts["authorsContent"] = text;
 	texts["authorsContent"].setFont(fonts["font"]);
-	texts["authorsContent"].setCharacterSize(36);
+	texts["authorsContent"].setCharacterSize(24);
 	texts["authorsContent"].setFillColor(sf::Color(94,201,134));
 	texts["authorsContent"].setStyle(sf::Text::Bold);
 	texts["authorsContent"].setPosition(200, 200);
@@ -747,7 +747,7 @@ int Game::loadAssets()
 	texts["menuOption3"].setString("HIGHSCORES");
 	texts["menuOption4"].setString("EXIT");
 	texts["authorsTitle"].setString("AUTHORS");
-	texts["authorsContent"].setString("C++ Developers:\nAleksander Tabor\nTomasz Zurek\n\nGame created with SFML Library\n\nGraphics were downloaded from:\nwww.freepik.com\n\nAudio files were downloaded from:\nwww.opengameart.org\nwww.freesound.org\n");
+	texts["authorsContent"].setString("C++ Developers:\nAleksander Tabor\nTomasz Zurek\n\nGame created with SFML Library\n\nGraphics were downloaded from:\nwww.freepik.com\nwww.flaticon.com\n\nAudio files were downloaded from:\nwww.opengameart.org\nwww.freesound.org\n\nSources (links & authors):\nSpaceShips\\Assets\\ASSETS_LICENSE.txt");
 	texts["level"].setString("LEVEL: 1");
 
 	texts["highscores"] = text;
