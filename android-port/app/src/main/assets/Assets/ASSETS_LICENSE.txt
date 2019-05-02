@@ -1,0 +1,37 @@
+Graphics:
+asteroid1.png & asteroid1Shot.png:
+https://opengameart.org/content/asteroid-generator-and-a-set-of-generated-asteroids
+bullet1.png (author: https://www.freepik.com):
+https://www.flaticon.com/free-icon/rocket-ship_124551
+bullet2.png (author: https://www.freepik.com):
+https://www.flaticon.com/free-icon/rocket-ship_124540
+gift1.png (author: https://www.freepik.com): 
+https://www.flaticon.com/free-icon/heart_179539
+gift2.png (author: https://www.flaticon.com/authors/maxim-basinski):
+https://www.flaticon.com/free-icon/star_291205
+gift3.png (author: https://www.flaticon.com/authors/pixel-buddha):
+https://www.flaticon.com/free-icon/power_99744
+enemy1.png & enemy2.png & enemy2Shot.png & player1.png (author: https://www.freepik.com):
+https://www.freepik.com/free-vector/lovely-spaceship-collection-with-flat-design_2857472.htm
+background.png (author: https://www.freepik.com):
+https://www.freepik.com/free-vector/abstract-splashed-watercolor-textured-background_2461975.htm
+menu.png (author: https://www.freepik.com):
+https://www.freepik.com/free-vector/space-background-with-planets_1229807.htm
+
+Audio:
+levels.ogg (original: Where's my Spaceship.wav):
+https://opengameart.org/content/wheres-my-spaceshipt
+menu.ogg (original: somespaceship2016jam.ogg):
+https://opengameart.org/content/some-spaceship-2016-jam
+boom.ogg (original: boom4.wav, author: dklon):
+https://opengameart.org/content/boom-pack-1
+explosion.ogg (original: explodemini.wav):
+https://opengameart.org/content/2-high-quality-explosions
+move.ogg (original: Spaceship passing.aif):
+https://freesound.org/people/harpoyume/sounds/86068/
+win.ogg & lose.ogg (original: VICTORY.ogg & LOSE.ogg):
+https://opengameart.org/content/fanfares
+
+Font:
+good_times_rg.ttf:
+http://typodermicfonts.com/good-times/
