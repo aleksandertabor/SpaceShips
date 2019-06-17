@@ -3,7 +3,6 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
-#include <SFML/Network.hpp>
 #include <cstdio>
 #include <vector>
 #include <iostream>
@@ -20,16 +19,13 @@
 #include <utility>
 #include <set>
 #include <fstream>
-#include <stdio.h>
-#include <errno.h>
-#if defined(__ANDROID__)
+#define USE_JNI
+#if defined(USE_JNI)
 // These headers are only needed for direct NDK/JDK interaction
-#include <exception>
 #include <jni.h>
 #include <assert.h>
 #include <android/native_activity.h>
 #include <android/log.h>
-#include <android/asset_manager.h>
 // Since we want to get the native activity from SFML, we'll have to use an
 // extra header here:
 #include <SFML/System/NativeActivity.hpp>

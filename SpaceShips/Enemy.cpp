@@ -9,7 +9,7 @@ Enemy::Enemy() {
 
 }
 
-Enemy::Enemy(int x, int y, int direction, int idSkin, int hp, int points, int power, int changeSkin, int shooting)
+Enemy::Enemy(int x, int y, int direction, int idSkin, int hp, int points, int power, int changeSkin, int shooting) 
 {
 	this->direction = direction;
 	this->idSkin = idSkin;
@@ -156,7 +156,7 @@ void Enemy::move()
 	if (direction == 4)
 	{
 		setPosition(x + speed, y);
-	}
+	}	
 	if (direction == 3)
 	{
 		setPosition(x, y + speed);

@@ -1,2 +1,15 @@
 #include "Game.h"
-int main() { Game game; game.run(); }
+
+
+
+
+
+
+int main() {
+    //std::string test1 = test();
+
+    Game game;
+
+game.run();
+
+}

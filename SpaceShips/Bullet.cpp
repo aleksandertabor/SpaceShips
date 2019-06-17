@@ -6,7 +6,7 @@ std::vector<sf::Texture*> Bullet::textures;
 
 Bullet::Bullet()
 {
-
+	
 }
 
 Bullet::Bullet(int x, int y, int idSkin, int power)
