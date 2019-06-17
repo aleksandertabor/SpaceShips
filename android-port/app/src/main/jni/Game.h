@@ -20,6 +20,7 @@ private:
 	static const int gameHeight = 720;
 	int screenWidth = 1280;
 	int screenHeight = 720;
+    double aspectRatio = (float)gameWidth/(float)screenWidth;
 
 	//Declaration of variables
 	static const int gameSpeed = 1000;
@@ -28,15 +29,17 @@ private:
 	static const int jumpDown = 40;
 
 	bool gameIsStarted = false;
+	bool active = true;
 	int currentLevel = 1;//initial level
 	int presentState = 0;//cycles
 	int actualView = 0;
 	int actualViewChoice = 1;
 	std::string topHighScoreBackground = "menu";
 
-    #if defined(USE_JNI)
+    #if defined(__ANDROID__)
 	const std::string highscoresFileName = "highscores.csv";
 	const std::string maxLevelFileName = "maxlevel.csv";
+	float touchY;
     #else
     const std::string highscoresFileName = "Assets/Data/highscores.csv";
 	const std::string maxLevelFileName = "Assets/Data/maxlevel.csv";
@@ -63,7 +66,7 @@ private:
 	Files file2;
 	Files file3;
 
-	std::string highscores[5][2];
+	std::string highscores[5][2] = {""};
 	std::vector<std::string> characters;
 	int currentChar[3] = { 0,0,0 };
 	int currentCharPosition = 0;
@@ -83,11 +86,19 @@ private:
 
 	//Methods
 	void processEvents();
-	int loadAssets(std::string char1);
-	void init(std::string char1);
+	int loadAssets();
+	void init();
 	void update();
 	int loadLevel(int level);
 	int playMusic(std::string track = "menu", float speed = 1);
+    #if defined(__ANDROID__)
     std::string loadFileAndroid(std::string fileName);
+    void loadFileHighscoresAndroid();
+    void saveFileHighscoresAndroid();
+    // Calls to Android's Native Acitivity in Java
+    int killAndroidApp();
+    int vibration(std::string message);
+    int saveToast(std::string playerName, std::string highscorePoints);
     std::vector<std::string> split(std::string str, char delimiter);
+    #endif
 };
