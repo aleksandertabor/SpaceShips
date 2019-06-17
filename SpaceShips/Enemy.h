@@ -22,8 +22,8 @@ private:
 	sf::Sprite sprite;
 	static std::vector<sf::Texture*> textures;
 	static int initialized;
-
-
+	
+	
 public:
 	Enemy();
 	Enemy(int x, int y, int direction, int idSkin, int hp, int points, int power, int changeSkin, int shooting);
@@ -41,7 +41,7 @@ public:
 	const int getChangeSkin();
 	const int getShooting();
 	const sf::Sprite getSprite();
-
+	
 	void setX(int x);
 	void setY(int y);
 	void setPosition(int x, int y);
