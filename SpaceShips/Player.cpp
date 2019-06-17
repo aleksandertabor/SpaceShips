@@ -9,7 +9,7 @@ Player::Player() {
 
 }
 
-Player::Player(int idSkin, int hp) 
+Player::Player(int idSkin, int hp)
 {
 	this->hp = hp;
 	this->idSkin = idSkin;
