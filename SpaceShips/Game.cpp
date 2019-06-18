@@ -841,21 +841,25 @@ int Game::loadAssets()
 
 	texts["menuOption1"] = text;
 	texts["menuOption1"].setFont(fonts["font"]);
+    #if defined(__ANDROID__)
 	texts["menuOption1"].setCharacterSize(80);
+    #else
+    texts["menuOption1"].setCharacterSize(36);
+    #endif
 	texts["menuOption1"].setFillColor(sf::Color(100, 216, 107));
 	texts["menuOption1"].setStyle(sf::Text::Bold);
     texts["menuOption1"].setPosition(sf::Vector2f(gameWidth/2.0f * aspectRatio,gameHeight/2.0f * aspectRatio));
 
-	texts["menuOption2"] = texts["menuOption1"];
-    texts["menuOption2"].setPosition(sf::Vector2f(gameWidth/2.0f * aspectRatio,gameHeight/2.0f * aspectRatio + 100));
+    texts["menuOption1"].setPosition(550, 270);
 
-	texts["menuOption3"] = texts["menuOption1"];
-	texts["menuOption3"].setPosition(550, 470);
-    texts["menuOption3"].setPosition(sf::Vector2f(gameWidth/2.0f * aspectRatio,gameHeight/2.0f * aspectRatio + 200));
+    texts["menuOption2"] = texts["menuOption1"];
+    texts["menuOption2"].setPosition(550, 370);
 
-	texts["menuOption4"] = texts["menuOption1"];
-	texts["menuOption4"].setPosition(550, 570);
-    texts["menuOption4"].setPosition(sf::Vector2f(gameWidth/2.0f * aspectRatio,gameHeight/2.0f * aspectRatio + 300));
+    texts["menuOption3"] = texts["menuOption1"];
+    texts["menuOption3"].setPosition(550, 470);
+
+    texts["menuOption4"] = texts["menuOption1"];
+    texts["menuOption4"].setPosition(550, 570);
 
 	texts["logo"] = text;
 	texts["logo"].setFont(fonts["font"]);
@@ -889,7 +893,11 @@ int Game::loadAssets()
 
 	texts["highscores"] = text;
 	texts["highscores"].setFont(fonts["font"]);
+    #if defined(__ANDROID__)
 	texts["highscores"].setCharacterSize(50);
+    #else
+    texts["highscores"].setCharacterSize(36);
+    #endif
 	texts["highscores"].setFillColor(sf::Color(100, 216, 107));
 	texts["highscores"].setStyle(sf::Text::Bold);
 	texts["highscores"].setPosition(gameWidth / 3, gameHeight / 4);
@@ -1174,23 +1182,23 @@ int Game::killAndroidApp() {
     }
 
     if (env->ExceptionCheck()) {
-        __android_log_print(ANDROID_LOG_INFO, "CLS", "Nie znajduje klasy?");
+        __android_log_print(ANDROID_LOG_INFO, "CLS", "Not found class.");
     }
 
     if (cls != nullptr)
     {
-        __android_log_print(ANDROID_LOG_INFO, "CLS", "Znajduje klase!");
+        __android_log_print(ANDROID_LOG_INFO, "CLS", "Found class.");
     } else {
-        __android_log_print(ANDROID_LOG_INFO, "CLS", "Nie znajduje klasy?");
+        __android_log_print(ANDROID_LOG_INFO, "CLS", "Not found class.");
     }
 
     jmethodID FinishProcess = env->GetMethodID(cls, "FinishProcess", "()V");
     if (FinishProcess == 0)
     {
-        __android_log_print(ANDROID_LOG_INFO, "CLS", "Nie znajduje metody?");
+        __android_log_print(ANDROID_LOG_INFO, "CLS", "Not found the method.");
     }
     else {
-        __android_log_print(ANDROID_LOG_INFO, "CLS", "Znajduje metode!");
+        __android_log_print(ANDROID_LOG_INFO, "CLS", "Found method!");
     }
 
     env->CallVoidMethod(activity->clazz, FinishProcess);
@@ -1205,44 +1213,35 @@ int Game::vibration(std::string message) {
     ANativeActivity *activity = sf::getNativeActivity();
     JavaVM *vm = activity->vm;
     JNIEnv *env = activity->env;
-
-    __android_log_print(ANDROID_LOG_INFO, "CLS", "Wchodzi do killAndroidApp");
-
     JavaVMAttachArgs attachargs;
     attachargs.version = JNI_VERSION_1_6;
     attachargs.name = "main";
     attachargs.group = NULL;
     jint res = vm->AttachCurrentThread(&env, &attachargs);
-
-
-    __android_log_print(ANDROID_LOG_INFO, "CLS", "Przed ladowaniem klasy");
-
-
     jclass cls = env->GetObjectClass(activity->clazz);
 
     if( env->ExceptionOccurred() ) {
-        __android_log_print(ANDROID_LOG_INFO, "CLS", "Nie znajduje klasy?");
         env->ExceptionDescribe();
     }
 
     if (env->ExceptionCheck()) {
-        __android_log_print(ANDROID_LOG_INFO, "CLS", "Nie znajduje klasy?");
+        __android_log_print(ANDROID_LOG_INFO, "CLS", "Not found class.");
     }
 
     if (cls != nullptr)
     {
-        __android_log_print(ANDROID_LOG_INFO, "CLS", "Znajduje klase!");
+        __android_log_print(ANDROID_LOG_INFO, "CLS", "Found class.");
     } else {
-        __android_log_print(ANDROID_LOG_INFO, "CLS", "Nie znajduje klasy?");
+        __android_log_print(ANDROID_LOG_INFO, "CLS", "Not found class.");
     }
 
     jmethodID Vibrate = env->GetMethodID(cls, "Vibrate", "(Ljava/lang/String;)V");
     if (Vibrate == 0)
     {
-        __android_log_print(ANDROID_LOG_INFO, "CLS", "Nie znajduje metody?");
+        __android_log_print(ANDROID_LOG_INFO, "CLS", "Not found the method.");
     }
     else {
-        __android_log_print(ANDROID_LOG_INFO, "CLS", "Znajduje metode!");
+        __android_log_print(ANDROID_LOG_INFO, "CLS", "Found method.");
     }
 
 
@@ -1258,9 +1257,6 @@ int Game::saveToast(std::string playerName, std::string highscorePoints) {
     ANativeActivity *activity = sf::getNativeActivity();
     JavaVM *vm = activity->vm;
     JNIEnv *env = activity->env;
-
-    __android_log_print(ANDROID_LOG_INFO, "CLS", "Wchodzi do killAndroidApp");
-
     JavaVMAttachArgs attachargs;
     attachargs.version = JNI_VERSION_1_6;
     attachargs.name = "main";
@@ -1269,30 +1265,27 @@ int Game::saveToast(std::string playerName, std::string highscorePoints) {
     jclass cls = env->GetObjectClass(activity->clazz);
 
     if( env->ExceptionOccurred() ) {
-        __android_log_print(ANDROID_LOG_INFO, "CLS", "Nie znajduje klasy?");
         env->ExceptionDescribe();
     }
 
-
-
     if (env->ExceptionCheck()) {
-        __android_log_print(ANDROID_LOG_INFO, "CLS", "Nie znajduje klasy?");
+        __android_log_print(ANDROID_LOG_INFO, "CLS", "Not found class.");
     }
 
     if (cls != nullptr)
     {
-        __android_log_print(ANDROID_LOG_INFO, "CLS", "Znajduje klase!");
+        __android_log_print(ANDROID_LOG_INFO, "CLS", "Found class.");
     } else {
-        __android_log_print(ANDROID_LOG_INFO, "CLS", "Nie znajduje klasy?");
+        __android_log_print(ANDROID_LOG_INFO, "CLS", "Not found class.");
     }
 
     jmethodID saveToast = env->GetMethodID(cls, "saveToast", "(Ljava/lang/String;Ljava/lang/String;)V");
     if (saveToast == 0)
     {
-        __android_log_print(ANDROID_LOG_INFO, "CLS", "Nie znajduje metody?");
+        __android_log_print(ANDROID_LOG_INFO, "CLS", "Not found the method.");
     }
     else {
-        __android_log_print(ANDROID_LOG_INFO, "CLS", "Znajduje metode!");
+        __android_log_print(ANDROID_LOG_INFO, "CLS", "Found method.");
     }
 
     jstring playerNameJava = env->NewStringUTF(playerName.c_str());
