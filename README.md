@@ -4,7 +4,7 @@
 <a href='https://play.google.com/store/apps/details?id=org.spaceships.android&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width="180" align="center"/></a>
 </p>
 <p align="center">
-<img src="http://aleksandertabor.pl/spaceships/spaceships.gif" />
+<img src="https://raw.githubusercontent.com/aleksandertabor/SpaceShips/master/Screens/spaceships.gif" />
 </p>
 
 <br />
@@ -50,7 +50,7 @@ https://www.sfml-dev.org/tutorials/2.5/start-vc.php
 6.Compile and run project
 ```
 <p align="center">
-<img align="center" src="http://aleksandertabor.pl/spaceships/visualstudiodebug.png" width="70%"/>
+<img align="center" src="https://raw.githubusercontent.com/aleksandertabor/SpaceShips/master/Screens/visual-studio-spaceships.png" width="70%"/>
 </p>
 
 ### Linux (Ubuntu)
@@ -84,7 +84,7 @@ Android assets (images, audio, levels) are in android-port\app\src\main\assets, 
 Java code is in android-port\app\src\main\java directory.
 ```
 <p align="center">
-<img align="center" src="http://aleksandertabor.pl/spaceships/androidstudiodebug.png" width="70%"/>
+<img align="center" src="https://raw.githubusercontent.com/aleksandertabor/SpaceShips/master/Screens/android-studio-spaceships.png" width="70%"/>
 </p>
 
 ## Authors

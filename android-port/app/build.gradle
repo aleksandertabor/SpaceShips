@@ -30,6 +30,11 @@ android {
             path "../../SpaceShips/Android.mk"
         }
     }
+    sourceSets {
+        main {
+            assets.srcDirs = ['../../SpaceShips/']
+        }
+    }
 }
 
 dependencies {
