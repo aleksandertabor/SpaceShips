@@ -11,15 +11,10 @@
 <br />
 
 <p align="center">
-
   <a href="#general">General</a> &#8226;
-
   <a href="#screens">Screens</a> &#8226;
-
   <a href="#compilation">Compilation</a> &#8226;
-
   <a href="#authors">Authors</a>
-
 </p>
 
 ## General
