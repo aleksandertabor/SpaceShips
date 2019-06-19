@@ -76,11 +76,10 @@ Note: If you run project in Android Studio it will throw an error about non-ASCI
     
 3.You can debug project with Gradle commands or open in Android Studio.
 Note: Android Port required all files from repository. DON'T extract only /android-port/ folder. 
-Source files (SpaceShips folder) are mutual for all platforms.
+Source files and assets (SpaceShips folder) are mutual for all platforms.
 4.Open project in Android Studio by choosing only build.gradle file in explorer directly from /android-port/ directory.
 5.Before debbuging remember about changing your paths for SDK and NDK in android-port\local.properties.
-Android Studio automatically will be scanning for source files from /SpaceShips/ folder - Android.mk and Application.mk are there.
-Android assets (images, audio, levels) are in android-port\app\src\main\assets, only code is mutual.
+Android Studio automatically will be scanning for source files and assets from /SpaceShips/ folder - Android.mk and Application.mk are there.
 Java code is in android-port\app\src\main\java directory.
 ```
 <p align="center">
