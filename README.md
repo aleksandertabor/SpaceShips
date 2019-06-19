@@ -9,7 +9,6 @@
 
 <br />
 <br />
-
 <p align="center">
   <a href="#general">General</a> &#8226;
   <a href="#screens">Screens</a> &#8226;
