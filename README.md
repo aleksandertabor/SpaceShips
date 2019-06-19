@@ -3,9 +3,6 @@
 <b>🆕 Available on:</b>
 <a href='https://play.google.com/store/apps/details?id=org.spaceships.android&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width="180" align="center"/></a>
 </p>
-
-![alt text](http://aleksandertabor.pl/spaceships/spaceships.gif)
-
 <p align="center">
 <img src="http://aleksandertabor.pl/spaceships/spaceships.gif" />
 </p>
@@ -15,12 +12,12 @@
 
 <p align="center">
 
-  <a href="#general">General</a> *
+  <a href="#general">General</a> &#8226;
 
-  <a href="#screens">Screens</a> *
+  <a href="#screens">Screens</a> &#8226;
 
-  <a href="#compilation">Compilation</a> *
-  
+  <a href="#compilation">Compilation</a> &#8226;
+
   <a href="#authors">Authors</a>
 
 </p>
