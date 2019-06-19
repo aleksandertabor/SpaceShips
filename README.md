@@ -12,11 +12,17 @@
 
 <br />
 <br />
+
 <p align="center">
+
   <a href="#general">General</a> *
+
   <a href="#screens">Screens</a> *
+
   <a href="#compilation">Compilation</a> *
+  
   <a href="#authors">Authors</a>
+
 </p>
 
 ## General
