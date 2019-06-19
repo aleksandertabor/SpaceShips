@@ -6,6 +6,10 @@
 
 ![alt text](http://aleksandertabor.pl/spaceships/spaceships.gif)
 
+<p align="center">
+<img src="http://aleksandertabor.pl/spaceships/spaceships.gif" />
+</p>
+
 <br />
 <br />
 <p align="center">
@@ -92,6 +96,7 @@ Java code is in android-port\app\src\main\java directory.
 ---|---
 [Aleksander Tabor ](https://aleksandertabor.pl) |[Tomasz Zurek](http://zurektomasz.pl)
 <br />
-The game was written by <b>Aleksander Tabor</b> and <b>Tomasz Zurek</b>br />
+The game was written by <b>Aleksander Tabor</b> and <b>Tomasz Zurek</b> <br />
+
 * My website: <b>https://aleksandertabor.pl</b> <br />
 * Co-author's website: <b>http://zurektomasz.pl</b>
