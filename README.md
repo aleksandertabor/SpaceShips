@@ -4,14 +4,14 @@
 <a href='https://play.google.com/store/apps/details?id=org.spaceships.android&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width="180" align="center"/></a>
 </p>
 <p align="center">
-<img align="center" src="http://aleksandertabor.pl/spaceships/spaceships.gif" width="100%"/>
+![alt text](http://aleksandertabor.pl/spaceships/spaceships.gif)
 </p>
 <br />
 <br />
 <p align="center">
-  <a href="#general">General</a> �
-  <a href="#screens">Screens</a> �
-  <a href="#compilation">Compilation</a> �
+  <a href="#general">General</a> *
+  <a href="#screens">Screens</a> *
+  <a href="#compilation">Compilation</a> *
   <a href="#authors">Authors</a>
 </p>
 
@@ -90,8 +90,8 @@ Java code is in android-port\app\src\main\java directory.
 ## Authors
 [![Aleksander Tabor](https://avatars0.githubusercontent.com/u/22729643?s=144&v=4)](https://github.com/aleksandertabor)  | [![Tomasz Zurek](https://avatars1.githubusercontent.com/u/26256302?s=144&v=4)](https://github.com/zurektomasz)
 ---|---
-[Aleksander Tabor ](https://aleksandertabor.pl) |[Tomasz Zurek](htts://zurektomasz.pl)
+[Aleksander Tabor ](https://aleksandertabor.pl) |[Tomasz Zurek](http://zurektomasz.pl)
 <br />
-The game was written by **Aleksander Tabor** and **Tomasz Zurek**<br />
-* My website: **https://aleksandertabor.pl/** <br />
-* Co-author's website: **http://zurektomasz.pl/**
+The game was written by <b>Aleksander Tabor</b> and <b>Tomasz Zurek</b>br />
+* My website: <b>https://aleksandertabor.pl</b> <br />
+* Co-author's website: <b>http://zurektomasz.pl</b>
