@@ -1,15 +1,17 @@
 <h1 align="center"> SpaceShips <img align="center" src="https://github.com/aleksandertabor/SpaceShips/blob/master/android-port/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png?raw=true" width="45"/> - multiplatform game</h1> <br>
 <p align="center">
-<b>?? Available on:</b>
+<b>ðŸ†• Available on:</b>
 <a href='https://play.google.com/store/apps/details?id=org.spaceships.android&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width="180" align="center"/></a>
 </p>
+<p align="center">
 <img align="center" src="http://aleksandertabor.pl/spaceships/spaceships.gif" width="100%"/>
+</p>
 <br />
 <br />
 <p align="center">
-  <a href="#general">General</a> •
-  <a href="#screens">Screens</a> •
-  <a href="#compilation">Compilation</a> •
+  <a href="#general">General</a> ï¿½
+  <a href="#screens">Screens</a> ï¿½
+  <a href="#compilation">Compilation</a> ï¿½
   <a href="#authors">Authors</a>
 </p>
 
@@ -86,9 +88,10 @@ Java code is in android-port\app\src\main\java directory.
 </p>
 
 ## Authors
-[![Aleksander Tabor](https://avatars0.githubusercontent.com/u/22729643?s=144&v=4)](https://github.com/aleksandertabor)  | [![Tomasz ¯urek](https://avatars1.githubusercontent.com/u/26256302?s=144&v=4)](https://github.com/zurektomasz)
+[![Aleksander Tabor](https://avatars0.githubusercontent.com/u/22729643?s=144&v=4)](https://github.com/aleksandertabor)  | [![Tomasz Zurek](https://avatars1.githubusercontent.com/u/26256302?s=144&v=4)](https://github.com/zurektomasz)
 ---|---
-[Aleksander Tabor ](https://aleksandertabor.pl) |[Tomasz ¯urek](htts://zurektomasz.pl)
-The game was written by **Aleksander Tabor** and **Tomasz ¯urek**<br />
+[Aleksander Tabor ](https://aleksandertabor.pl) |[Tomasz Zurek](htts://zurektomasz.pl)
+<br />
+The game was written by **Aleksander Tabor** and **Tomasz Zurek**<br />
 * My website: **https://aleksandertabor.pl/** <br />
 * Co-author's website: **http://zurektomasz.pl/**
